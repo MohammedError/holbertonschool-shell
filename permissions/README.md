@@ -15,6 +15,4 @@
 * **11-directories_permissions**: Adds execute permission to all subdirectories.
 * **12-directory_permissions**: Creates directory `my_dir` with 751 permissions.
 * **13-change_group**: Changes group of `hello` to `school`.
-* **14-change_owner_and_group**: Changes owner and group for all items in the current directory.
-* **15-symbolic_link_permissions**: Changes owner and group of a symbolic link.
-* **16-if_only**: Changes owner of `hello` to `vincent` only if owned by `guillaume`.
+* **14-change_owner_and_group**: Changes owner and group for all files and directories.

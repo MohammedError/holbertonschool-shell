@@ -16,4 +16,3 @@
 * **12-directory_permissions**: Creates directory `my_dir` with 751 permissions.
 * **13-change_group**: Changes group of `hello` to `school`.
 * **14-change_owner_and_group**: Changes owner and group for all items in the current directory.
-* **15-symbolic_link_permissions**: Changes owner and group of a symbolic link.

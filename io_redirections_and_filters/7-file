@@ -1,2 +1,4 @@
 #!/bin/bash
-echo "Best School" > '\*\\'"Best School"\'\\*$\?\*\*\*\*\*:)
+FILENAME='*\\'"Best School"\'\\*$\?*****:)'
+touch "$FILENAME"
+ls | grep -o "Best School" > "$FILENAME"

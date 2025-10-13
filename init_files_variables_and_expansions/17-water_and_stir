@@ -1,2 +1,43 @@
 #!/bin/bash
-dc -e "5i $(echo "$WATER" | tr 'aertw' '01234') 4i $(echo "$STIR" | tr 'irst' '0123') + 8o p" | tr '01234567' 'bcehlost'
+
+# Script to add two numbers in custom bases and print the result in a third custom base.
+
+# 1. Define the digits for each base based on the problem description.
+# The order of characters matters for the mapping.
+WATER_DIGITS='water'
+STIR_DIGITS='stir'
+BESTCHOL_DIGITS='bestchol'
+
+# 2. Define the corresponding standard digits for calculation.
+# For base-5 (water), we use 0-4.
+# For base-4 (stir), we use 0-3.
+# For base-8 (bestchol), we use 0-7.
+WATER_MAP='01234'
+STIR_MAP='0123'
+BESTCHOL_MAP='01234567'
+
+# 3. Convert the number in WATER from 'base water' to standard base-5 digits.
+# The `tr` command substitutes each character from WATER_DIGITS with the one at the same position in WATER_MAP.
+# Example: 'e' becomes '3', 'w' becomes '0', etc.
+WATER_IN_BASE5=$(echo "$WATER" | tr "$WATER_DIGITS" "$WATER_MAP")
+
+# 4. Convert the number in STIR from 'base stir' to standard base-4 digits.
+# The '.' character in the example STIR value is not part of the 'stir' digits,
+# so `tr` will ignore it and pass it through, which `bc` correctly interprets as a radix point.
+STIR_IN_BASE4=$(echo "$STIR" | tr "$STIR_DIGITS" "$STIR_MAP")
+
+# 5. Use `bc` (basic calculator) to perform the main calculation.
+# `ibase` sets the input base. We convert both numbers to decimal first, then add them.
+# The problem's example implies the sum is an integer, so we truncate the result using `scale=0`.
+SUM_IN_DECIMAL=$(echo "scale=0; (ibase=5; $WATER_IN_BASE5) + (ibase=4; $STIR_IN_BASE4)" | bc)
+
+# 6. Convert the decimal sum to the output base (base-8 for 'bestchol').
+# `obase` sets the output base for `bc`.
+SUM_IN_BASE8=$(echo "obase=8; $SUM_IN_DECIMAL" | bc)
+
+# 7. Translate the standard base-8 digits back to the custom 'bestchol' digits.
+# The `tr` command substitutes '0' with 'b', '1' with 'e', and so on.
+FINAL_RESULT=$(echo "$SUM_IN_BASE8" | tr "$BESTCHOL_MAP" "$BESTCHOL_DIGITS")
+
+# 8. Print the final result.
+echo "$FINAL_RESULT"

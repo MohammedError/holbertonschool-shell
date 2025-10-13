@@ -1,2 +1,5 @@
 #!/bin/bash
-find . -type f | sed -n '/\.[gG][iI][fF]$/p' | sed -e 's/.*\///' -e 's/\.[gG][iI][fF]$//' | LC_COLLATE=C sort -f
+find . -type f -name "*.[gG][iI][fF]" | while read -r filename; do
+    name_only=${filename##*/}
+    printf "%s\n" "${name_only%.[gG][iI][fF]}"
+done | LC_COLLATE=C sort -f

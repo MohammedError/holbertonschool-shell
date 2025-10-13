@@ -1,4 +1,5 @@
 #!/bin/bash
 W=$(echo "$WATER" | tr -cd 'water' | tr 'water' '01234')
 S=$(echo "$STIR"  | tr -cd 'stir'  | tr 'stir'  '0123')
-echo $((5#$W + 5#$S)) | tr '01234567' 'bestchol'
+SUM=$((5#$W + 5#$S))
+echo $SUM | tr '01234567' 'bestchol'

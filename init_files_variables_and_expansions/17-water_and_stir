@@ -1,3 +1,2 @@
 #!/bin/bash
-echo $(( $(echo "$WATER" | tr 'water' '01234' | xargs -I {} echo "ibase=5; {}") + $(echo "$STIR" | tr 'stir' '0123' | xargs -I {} echo "ibase=4; {}") )) | bc | xargs -I {} echo "obase=8; {}" | bc | tr '01234567' 'bestchol'
-
+printf "%o" $(( 5#$(echo "$WATER" | tr 'water' '01234') + 4#$(echo "$STIR" | tr -d '."' | tr 'stir' '0123') )) | tr '01234567' 'bestchol'

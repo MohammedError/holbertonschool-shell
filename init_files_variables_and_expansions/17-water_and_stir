@@ -1,5 +1,2 @@
 #!/bin/bash
-w_dec=$(echo "$WATER" | tr 'water' '01234')
-s_dec=$(echo "$STIR" | tr 'stir' '0123')
-result_dec=$(dc -e "5i ${w_dec} 4i ${s_dec} + 8o p")
-echo "$result_dec" | tr '01234567' 'bestchol'
+dc -e "5i $(echo "$WATER" | tr 'water' '01234') 4i $(echo "$STIR" | tr 'stir' '0123') + 8o p" | tr '01234567' 'bestchol'

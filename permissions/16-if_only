@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -maxdepth 1 -name hello -user guillaume | xargs chown vincent
+if [ "$(stat -c %U hello 2>/dev/null)" = "guillaume" ]; then chown vincent hello; fi

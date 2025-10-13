@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "${PATH//[^:]}" | wc -c | xargs -I {} expr {} + 1
+echo "$PATH" | tr : 
+\ | wc -l

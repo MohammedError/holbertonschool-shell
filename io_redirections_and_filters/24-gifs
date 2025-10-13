@@ -1,16 +1,2 @@
 #!/bin/bash
-python3 - <<'PY'
-import os,sys
-res=[]
-for root,dirs,files in os.walk('.'):
-    for f in files:
-        if f.lower().endswith('.gif'):
-            path=os.path.join(root,f)
-            if not os.path.isfile(path):
-                continue
-            name=f[:-4]
-            res.append(name)
-res.sort(key=lambda s: s.lower().encode('utf-8'))
-for r in res:
-    sys.stdout.write(r + "\n")
-PY
+find . -type f -iname "*.gif" -printf "%f\n" | sed 's/\.gif$//I' | LC_COLLATE=C sort -f

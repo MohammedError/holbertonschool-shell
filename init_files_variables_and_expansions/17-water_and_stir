@@ -1,5 +1,2 @@
 #!/bin/bash
-W=$(echo "$WATER" | tr -cd 'water' | tr 'water' '01234')
-S=$(echo "$STIR"  | tr -cd 'stir'  | tr 'stir'  '0123')
-R=$(echo "obase=8;ibase=5;$W+$S" | bc)
-echo "$R" | tr '01234567' 'bestchol'
+echo $((5#$(echo "$WATER" | tr -cd 'water' | tr 'water' '01234' || echo 0) + 5#$(echo "$STIR" | tr -cd 'stir' | tr 'stir' '0123' || echo 0))) | tr '01234567' 'bestchol'

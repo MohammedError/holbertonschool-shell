@@ -1,5 +1,2 @@
 #!/bin/bash
-find . -type f -name "*.[gG][iI][fF]" | while read -r filename; do
-    name_only=${filename##*/}
-    printf "%s\n" "${name_only%.[gG][iI][fF]}"
-done | LC_COLLATE=C sort -f
+find . -type f -name "*.gif" -printf "%f\n" | rev | cut -d '.' -f 2- | rev | sort -f

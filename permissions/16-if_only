@@ -1,2 +1,2 @@
 #!/bin/bash
-find /tmp/hello -user guillaume -exec chown vincent /tmp/hello \;
+find . -name hello -user guillaume -exec chown vincent {} \;

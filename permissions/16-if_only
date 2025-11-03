@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -l hello | tr -s ' ' | cut -d ' ' -f 3 | uniq -u | xargs -I {} chown vincent hello
+chown --from=guillaume vincent hello

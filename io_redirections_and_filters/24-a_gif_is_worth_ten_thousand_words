@@ -1,0 +1,2 @@
+#!/bin/bash
+find . -type f -name "*.gif" | xargs -n 1 basename | sort | rev | cut -c 5- | rev
